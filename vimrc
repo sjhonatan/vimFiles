@@ -91,14 +91,10 @@ au FocusLost * :wa
 " clean screen "
 :nmap <leader>l :!clear <CR><CR>
 "Setting some configurations for Python purposes
-:let conda3py="/home/hphesto/anaconda3/bin/python "
-:let pyVim="/home/hphesto/.vim/pyFiles"
-:let pyUpdate="/home/hphesto/anaconda3/bin -B /home/hphesto/.vim/pyFiles/update.py"
-:let pyGit="/home/hphesto/anaconda3/bin -B /home/hphesto/.vim/pyFiles/git.py"
-:nmap <leader>p :!clear && conda3py -B % <CR>
+:nmap <leader>p :!clear && ~/anaconda3/bin/python -B % <CR>
 "Setting some configurations for C++ purposes
 :nmap <leader>re :!make %:r<CR> :!./%:r
-:nmap <leader>gud :!pyUpdate % && pyGit % 
+:nmap <leader>gud :!~/anaconda3/bin/python -B ~/.vim/pyFiles/git.py % && ~/anaconda3/bin/python -B ~/.vim/pyFiles/git.py  % 
 
 "Setting some configurations for latex purposes
 :nmap <leader>latex :!pdflatex % <CR> 
