@@ -14,26 +14,13 @@ set wildmenu
 "Shows the commands that you type in the botton of the screen
 set showcmd
 "This map is to make a file with a map of a file that you use a lot
-"nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
-
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
-
 filetype plugin indent on
 syntax on
-"colorscheme quantum
 colorscheme blues
-
 "For no vi compatibility
 set nocompatible
 set nocp
 set modelines=0
-
 " Showing line numbers and length
 set number " show line numbers
 set tw=79 " width of document (used by gd)
@@ -41,16 +28,10 @@ set nowrap " don't automatically wrap on load
 set fo-=t " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
-" Source a global configuration file if available
-"if filereadable("/etc/vim/vimrc.local")
-"  source /etc/vim/vimrc.local
-"endif
-
 "Show the relative number on the left screen
 set relativenumber
 set foldmethod=indent
 set foldlevel=99
-
 "Some configurations for python
 set tabstop=4
 set softtabstop=4
@@ -105,50 +86,19 @@ au FocusLost * :wa
 :nmap <leader>9 ci(
 :nmap <leader>[ ci[
 
-":imap <leader>m <C-n><C-x>
-":imap <leader>n <C-n>
-" key for open nerdtree
-:nmap <F2> :NERDTreeToggle<CR>
-"change inside parentheses
-:nmap <leader>p ci)
-:nmap <leader>d di)
 " change between screens "
 :nmap <leader>w <C-w>w
-:nmap <leader>ci 0wi#<Esc>
-:nmap <leader>cc 0i#<Esc>
-:nmap <leader>. Lzz
-:nmap <leader>m Hzz
-"Setting some configurations for Python purposes
-:nmap <leader>p :!clear && ~/anaconda3/bin/python -B % <CR>
-:nmap <leader>test :!test  
-
-
-"Setting some configurations for C++ purposes
-"with ",cr" you can compile and run your c/c++ program
-:nmap <leader>createc :! ~/anaconda3/bin/python ~/.vim/pyFiles/createClass.py % <CR> <CR>
-:nmap <leader>_test :! ~/anaconda3/bin/python ~/.vim/pyFiles/createInstanceOfTest.py % <CR>
-:nmap <leader>re :!make %:r<CR> :!./%:r
-:nmap <leader>ra :!g++ -o main *.cpp<CR> :!./main 
-:nmap <leader>ogl :!gcc -o main % -lglut -lGL -lGLU -lm <CR> :!./main <CR>
-:nmap <leader>ocv :!g++ -o main % `pkg-config opencv --cflags --libs` <CR> :!./main <CR>
+" clean screen "
 :nmap <leader>l :!clear <CR><CR>
-" If you're using the eigen library for 
-" matrices, arrays, and linear algebra
-" you can type ,reigen and that will compile
-:nmap <leader>reigen :!g++ -I /home/hphesto/git/nogit/cpp/eigenLibrary -o main *.cpp<CR> :!./main
-
-"Setting some configurations for git purposes
-
-:nmap <leader>gc :!git add % && git commit -m "update" <CR> 
-":let t = strftime('%c') 
-":nmap <leader>t :!date
-:nmap <leader>up :!~/anaconda3/bin/python -B ~/.vim/pyFiles/update.py % <CR>
-"commit is maped as cm
-"git push origin master is maped as gm
-"git push origin develop is maped as gd
-:nmap <leader>gum :!~/anaconda3/bin/python -B ~/.vim/pyFiles/update.py % && git add % && git cm -m "update" <CR> 
-:nmap <leader>gud :!~/anaconda3/bin/python -B ~/.vim/pyFiles/update.py % && ~/anaconda3/bin/python ~/.vim/pyFiles/git.py % 
-:nmap <leader>gm :!git add % && git cm -m "update" <CR>
+"Setting some configurations for Python purposes
+:let conda3py="/home/hphesto/anaconda3/bin/python "
+:let pyVim="/home/hphesto/.vim/pyFiles"
+:let pyUpdate="/home/hphesto/anaconda3/bin -B /home/hphesto/.vim/pyFiles/update.py"
+:let pyGit="/home/hphesto/anaconda3/bin -B /home/hphesto/.vim/pyFiles/git.py"
+:nmap <leader>p :!clear && conda3py -B % <CR>
+"Setting some configurations for C++ purposes
+:nmap <leader>re :!make %:r<CR> :!./%:r
+:nmap <leader>gud :!pyUpdate % && pyGit % 
 
 "Setting some configurations for latex purposes
 :nmap <leader>latex :!pdflatex % <CR> 
